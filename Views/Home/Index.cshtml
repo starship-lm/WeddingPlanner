@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model ViewModel
+<div class="register">
+    <h3>Register</h3>
+    <form asp-controller="Home" asp-action="Register" method="post">
+        <span class="error" asp-validation-for="Register.FirstName"></span>
+        <label asp-for="Register.FirstName">First Name:</label>
+        <input asp-for="Register.FirstName" type="text">
+
+        <span class="error" asp-validation-for="Register.LastName"></span>
+        <label asp-for="Register.LastName">Last Name:</label>
+        <input asp-for="Register.LastName" type="text">
+
+        <span class="error" asp-validation-for="Register.Email"></span>
+        <label asp-for="Register.Email">Email:</label>
+        <input asp-for="Register.Email" type="email">
+
+        <span class="error" asp-validation-for="Register.Password"></span>
+        <label asp-for="Register.Password">Password:</label>
+        <input asp-for="Register.Password" type="password">
+
+        <span class="error" asp-validation-for="Register.ConfirmPassword"></span>
+        <label asp-for="Register.ConfirmPassword">Confirm Password:</label>
+        <input asp-for="Register.ConfirmPassword" type="password">
+        <br>
+        <input type="submit" value="Register">
+    </form>
+</div>
+<div class="login">
+    <h3>Login</h3>
+    <form asp-controller="Home" asp-action="LoginUser" method="post">
+    <span class="error" asp-validation-for="Login.EmailAttempt"></span>
+    <span class="error" asp-validation-for="Login.PasswordAttempt"></span>
+    <label asp-for="Login.EmailAttempt">Email:</label>
+    <input asp-for="Login.EmailAttempt" type="email">
+
+    <label asp-for="Login.PasswordAttempt">Password:</label>
+    <input asp-for="Login.PasswordAttempt" type="password">
+    <br>
+    <input type="submit" value="Login">
+</form>
+</div>

@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@model List<Weddings>
+<h3>Welcome to the wedding planner!</h3>
+<a asp-controller="Home" asp-action="Logout"><button>Logout</button></a>
+<table>
+    <thead>
+        <tr>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var wedding in Model)
+        {
+            <tr>
+                <td><a asp-controller="Wedding" asp-action="Show" asp-route-weddingId="@wedding.WeddingId">@wedding.Bride and @wedding.Groom</a></td>
+                <td>@wedding.Date</td>
+                <td>@wedding.Reservations.Count</td>
+                @{
+                    if(wedding.UserId == ViewBag.LoggedInUser)
+                    {
+                        <td><a asp-controller="Wedding" asp-action="Delete" asp-route-weddingId="@wedding.WeddingId">Delete</a></td>
+                    }
+                    else if(wedding.Reservations.Any(a => a.UserId == ViewBag.LoggedInUser))
+                    {
+                        <td><a asp-controller="Reservation" asp-action="UnRSVP" asp-route-weddingId="@wedding.WeddingId">Un-RSVP</a></td>
+                    }
+                    else 
+                    {
+                        <td><a asp-controller="Reservation" asp-action="RSVP" asp-route-weddingId="@wedding.WeddingId">RSVP</a></td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Wedding" asp-action="Create"><button>New Wedding</button></a>

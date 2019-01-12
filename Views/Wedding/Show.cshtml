@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "";
+}
+@model Weddings
+<div>
+    <h3>@Model.Groom and @Model.Groom 's Wedding</h3>
+    <a asp-controller="Wedding" asp-action="Dashboard"><button>Dashboard</button></a>
+    <a asp-controller="Home" asp-action="Logout"><button>Logout</button></a>
+</div>
+<div>
+    <h5>Wedding Date: @Model.Date</h5>
+    <h5>Guests:</h5>
+    @foreach (var guest in Model.Reservations)
+    {
+        <ul>@guest.Guest.FullName</ul>
+    }
+</div>

@@ -1,0 +1,15 @@
+/*Write all of your CSS here*/
+.error {
+    color: red;
+    display: block;
+}
+
+.register {
+    display: inline-block;
+    padding: 20px;
+}
+.login {
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+}
